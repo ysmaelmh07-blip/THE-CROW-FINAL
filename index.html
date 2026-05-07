@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santa Isabel Cup - Official</title>
     
-    <!-- Favicon: Este es el código que cambia el icono de la pestaña del navegador -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="ChatGPT Image 7 may 2026, 02_07_08 p.m..png">
     
     <!-- Tailwind CSS -->
@@ -19,7 +19,6 @@
             --cup-gold: #d4af37;
             --cup-gold-light: #f9e29b;
             --cup-dark: #0a0a0a;
-            --cup-purple: #4b0082;
         }
 
         body {
@@ -32,7 +31,6 @@
 
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
 
-        /* Banner Principal Adaptado a la nueva imagen */
         .hero-section {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(10,10,10,1)), 
                         url('ChatGPT Image 7 may 2026, 02_07_08 p.m..png');
@@ -82,7 +80,6 @@
             transform: translateY(-5px);
         }
 
-        /* Tabla Estilo E-Sports */
         .table-header {
             background: linear-gradient(90deg, rgba(212,175,55,0.1) 0%, rgba(0,0,0,0) 100%);
             border-left: 4px solid var(--cup-gold);
@@ -93,15 +90,22 @@
             transition: background 0.3s;
         }
 
-        .table-row:hover {
-            background: rgba(212, 175, 55, 0.05);
-        }
-
-        /* Animación suave para cambio de vistas */
         .view-transition { animation: fadeIn 0.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .hidden-view { display: none; }
+
+        /* Estilos para el Modal de Integrantes */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            overflow-y: auto;
+            padding: 2rem;
+        }
     </style>
 </head>
 <body>
@@ -127,7 +131,7 @@
         </div>
     </nav>
 
-    <!-- VISTA: HOME (Banner Principal) -->
+    <!-- VISTA: HOME -->
     <main id="view-home" class="view-transition">
         <section class="hero-section text-center px-6">
             <div class="max-w-4xl">
@@ -136,32 +140,10 @@
                 </div>
                 <h1 class="text-6xl md:text-9xl font-orbitron font-black italic mb-2 tracking-tighter uppercase leading-none gold-text">SANTA ISABEL</h1>
                 <h2 class="text-5xl md:text-8xl font-orbitron font-black italic mb-8 tracking-tighter uppercase leading-none text-white">CUP 2026</h2>
-                <p class="text-lg md:text-xl text-zinc-400 font-medium tracking-widest mb-12 uppercase italic">
-                    La gloria te espera en el campo de batalla. <span class="text-yellow-600">Completa el formulario oficial.</span>
-                </p>
                 <div class="flex flex-col sm:flex-row gap-6 justify-center">
                     <button onclick="showView('teams')" class="btn-primary italic text-xl px-12 py-5">Ver Rivales</button>
                     <button onclick="registerYourTeam()" class="bg-white/5 hover:bg-white/10 border border-white/20 italic text-xl px-12 py-5 uppercase font-black transition-all">Formulario de Registro</button>
                 </div>
-            </div>
-        </section>
-
-        <!-- Sección de Info Rápida -->
-        <section class="py-24 container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="card-glass p-8 text-center">
-                <i class="fas fa-trophy text-4xl text-yellow-600 mb-4"></i>
-                <h3 class="font-orbitron font-black text-xl mb-2">GRAN PREMIO</h3>
-                <p class="text-zinc-500 font-bold uppercase text-sm tracking-widest">En disputa por el mejor clan</p>
-            </div>
-            <div class="card-glass p-8 text-center">
-                <i class="fas fa-users text-4xl text-yellow-600 mb-4"></i>
-                <h3 class="font-orbitron font-black text-xl mb-2">EQUIPOS TOP</h3>
-                <p class="text-zinc-500 font-bold uppercase text-sm tracking-widest">Nivel competitivo asegurado</p>
-            </div>
-            <div class="card-glass p-8 text-center">
-                <i class="fas fa-broadcast-tower text-4xl text-yellow-600 mb-4"></i>
-                <h3 class="font-orbitron font-black text-xl mb-2">TRANSMISIÓN</h3>
-                <p class="text-zinc-500 font-bold uppercase text-sm tracking-widest">Cast en vivo por redes oficiales</p>
             </div>
         </section>
     </main>
@@ -171,22 +153,19 @@
         <div class="flex flex-col md:flex-row justify-between items-center mb-16 border-l-8 border-yellow-600 pl-6 gap-6">
             <div>
                 <h2 class="text-6xl font-orbitron font-black italic uppercase tracking-tighter">EQUIPOS <span class="text-yellow-600">REGISTRADOS</span></h2>
-                <p class="text-zinc-500 font-bold uppercase tracking-widest text-sm">Escuadras confirmadas para el torneo</p>
+                <p class="text-zinc-500 font-bold uppercase tracking-widest text-sm">Haz clic en el escudo para ver integrantes</p>
             </div>
-            <button onclick="registerYourTeam()" class="btn-primary italic text-xl px-10 py-4 flex items-center gap-3">
-                <i class="fas fa-file-signature text-2xl"></i> Inscribir Equipo
-            </button>
         </div>
-        <div id="teams-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        <div id="teams-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Cargado por JS -->
+        </div>
     </section>
 
-    <!-- VISTA: TABLA (Clasificación) -->
+    <!-- VISTA: TABLA -->
     <section id="view-stats" class="hidden-view py-32 container mx-auto px-6 view-transition">
         <div class="mb-16 border-l-8 border-yellow-600 pl-6">
             <h2 class="text-6xl font-orbitron font-black italic uppercase tracking-tighter text-white">TABLA DE <span class="text-yellow-600">POSICIONES</span></h2>
-            <p class="text-zinc-500 font-bold uppercase tracking-widest text-sm">Clasificación general en tiempo real</p>
         </div>
-
         <div class="overflow-x-auto card-glass p-4 md:p-8">
             <table class="w-full text-left border-collapse">
                 <thead>
@@ -198,21 +177,47 @@
                         <th class="py-4 px-6 text-center">Total Puntos</th>
                     </tr>
                 </thead>
-                <tbody id="leaderboard-body">
-                    <!-- Los datos se cargan vía JavaScript -->
-                </tbody>
+                <tbody id="leaderboard-body"></tbody>
             </table>
         </div>
     </section>
 
-    <!-- Script de Funcionalidad -->
+    <!-- MODAL DE INTEGRANTES -->
+    <div id="team-modal" class="modal-overlay">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex justify-between items-center mb-12">
+                <h2 id="modal-team-name" class="text-5xl font-orbitron font-black italic gold-text uppercase">EQUIPO</h2>
+                <button onclick="closeModal()" class="text-white hover:text-yellow-500 text-4xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="modal-players-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Jugadores inyectados aquí -->
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Lista de equipos limpia, solo con tu equipo principal
-        const squads = [
-            { id: 'the-crow', name: 'THE CROW', logo: 'logo de scuad.jpeg', kills: 0, booyahs: 0, points: 0 }
+        // BASE DE DATOS DEFINITIVA - CORRECCIONES APLICADAS
+        const playersData = [
+            { nick: 'KILLER', name: 'Beckham Laura', role: 'Granadero', img: 'ChatGPT Image 6 may 2026, 05_02_10 p.m..png' },
+            { nick: 'DEADLYSHOT', name: 'Pool Munive', role: 'L2 / IGL', img: 'ChatGPT Image 6 may 2026, 06_33_47 p.m..png' },
+            { nick: 'TRUE', name: 'Max Josué', role: 'Soporte', img: 'ChatGPT Image 6 may 2026, 06_52_44 p.m..png' },
+            { nick: 'YISMA', name: 'Ysmael Marcos', role: 'Rusher L1', img: 'ChatGPT Image 6 may 2026, 09_14_24 p.m..png' },
+            { nick: 'NEY', name: 'Anthony Marcos', role: 'Rusher', img: 'ChatGPT Image 6 may 2026, 09_37_28 p.m..png' },
+            { nick: 'CHAVAL', name: 'Farit Mayorca', role: 'Soporte', img: null } // Imagen puesta en null para modo incógnito
         ];
 
-        // Función con el URL real proporcionado por el usuario
+        const squads = [
+            { 
+                id: 'the-crow', 
+                name: 'THE CROW', 
+                logo: 'logo de scuad.jpeg', 
+                kills: 0, 
+                booyahs: 0, 
+                points: 0,
+                players: playersData 
+            }
+        ];
+
         function registerYourTeam() {
             const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSclftgFX0_6YCCcu9INSZlVYfFCJTF5In0tR6XERIp8wkCCPQ/viewform?usp=publish-editor"; 
             window.open(googleFormUrl, '_blank');
@@ -228,18 +233,45 @@
             window.scrollTo(0,0);
         }
 
+        function openTeamDetails(squadId) {
+            const squad = squads.find(s => s.id === squadId);
+            if(!squad) return;
+
+            document.getElementById('modal-team-name').innerText = squad.name;
+            const grid = document.getElementById('modal-players-grid');
+            
+            grid.innerHTML = squad.players.map(p => `
+                <div class="card-glass p-4 flex items-center gap-4">
+                    <div class="w-20 h-20 bg-black rounded border border-yellow-600/30 overflow-hidden flex-shrink-0">
+                        ${p.img ? 
+                            `<img src="${p.img}" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-zinc-800 text-2xl\'><i class=\'fas fa-user-ninja\'></i></div>'">` : 
+                            `<div class="w-full h-full flex items-center justify-center text-zinc-700 text-3xl bg-zinc-900"><i class="fas fa-user-secret"></i></div>`
+                        }
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-orbitron font-black italic gold-text">${p.nick}</h4>
+                        <p class="text-white text-xs font-bold opacity-70">${p.name}</p>
+                        <p class="text-yellow-600 text-[10px] font-black uppercase tracking-tighter mt-1">${p.role}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('team-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('team-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
         function loadLeaderboard() {
             const body = document.getElementById('leaderboard-body');
             if(!body) return;
-
-            // Ordenar por puntos (descendente)
             const sortedSquads = [...squads].sort((a, b) => b.points - a.points);
-
             body.innerHTML = sortedSquads.map((s, index) => `
                 <tr class="table-row font-bold">
-                    <td class="py-6 px-6">
-                        <span class="${index === 0 ? 'text-yellow-400 text-2xl' : 'text-white'} font-orbitron">#${index + 1}</span>
-                    </td>
+                    <td class="py-6 px-6 font-orbitron">#${index + 1}</td>
                     <td class="py-6 px-6">
                         <div class="flex items-center gap-4">
                             <img src="${s.logo}" class="w-10 h-10 rounded-full border border-yellow-600/30 object-cover" onerror="this.src='https://via.placeholder.com/40/000000/FFFFFF?text=TC'">
@@ -248,11 +280,7 @@
                     </td>
                     <td class="py-6 px-6 text-center text-zinc-400 font-orbitron">${s.kills}</td>
                     <td class="py-6 px-6 text-center text-yellow-600 font-orbitron">${s.booyahs}</td>
-                    <td class="py-6 px-6 text-center">
-                        <span class="bg-yellow-600 text-black px-4 py-1 rounded font-black font-orbitron text-xl">
-                            ${s.points}
-                        </span>
-                    </td>
+                    <td class="py-6 px-6 text-center font-orbitron text-xl">${s.points}</td>
                 </tr>
             `).join('');
         }
@@ -261,14 +289,16 @@
             const grid = document.getElementById('teams-grid');
             if(!grid) return;
             grid.innerHTML = squads.map(s => `
-                <div class="card-glass group overflow-hidden cursor-pointer">
-                    <div class="h-56 bg-black flex items-center justify-center relative overflow-hidden">
+                <div class="card-glass group overflow-hidden cursor-pointer" onclick="openTeamDetails('${s.id}')">
+                    <div class="h-64 bg-black flex items-center justify-center relative overflow-hidden">
                         <img src="${s.logo}" class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition duration-700" onerror="this.src='https://via.placeholder.com/300/000000/FFFFFF?text=${s.name}'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                             <span class="bg-yellow-600 text-black font-black px-4 py-2 uppercase italic skew-x-[-10deg]">Ver Integrantes</span>
+                        </div>
                     </div>
                     <div class="p-6 text-center">
-                        <h3 class="font-orbitron font-black text-2xl italic uppercase gold-text">${s.name}</h3>
-                        <p class="text-[10px] text-zinc-500 tracking-widest font-black uppercase mt-1 italic">Ver Alineación</p>
+                        <h3 class="font-orbitron font-black text-3xl italic uppercase gold-text">${s.name}</h3>
                     </div>
                 </div>
             `).join('');
