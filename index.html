@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copa Vuelo Eterno - THE CROW</title>
+    <title>Santa Isabel Cup - Official</title>
+    
+    <!-- Favicon: Este es el código que cambia el icono de la pestaña del navegador -->
+    <link rel="icon" type="image/png" href="ChatGPT Image 7 may 2026, 02_07_08 p.m..png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Iconos -->
@@ -12,14 +16,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
 
         :root {
-            --ff-gold: #ff9d00;
-            --ff-fire: #ff4500;
-            --ff-dark: #080808;
-            --ff-zinc: #18181b;
+            --cup-gold: #d4af37;
+            --cup-gold-light: #f9e29b;
+            --cup-dark: #0a0a0a;
+            --cup-purple: #4b0082;
         }
 
         body {
-            background-color: var(--ff-dark);
+            background-color: var(--cup-dark);
             color: white;
             font-family: 'Rajdhani', sans-serif;
             scroll-behavior: smooth;
@@ -28,495 +32,251 @@
 
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
 
+        /* Banner Principal Adaptado a la nueva imagen */
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(8,8,8,1)), 
-                        url('6 may 2026, 04_57_19 p.m..png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center top;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(10,10,10,1)), 
+                        url('ChatGPT Image 7 may 2026, 02_07_08 p.m..png');
+            background-size: cover;
+            background-position: center;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-bottom: 2px solid var(--cup-gold);
         }
 
         .btn-primary {
-            background: linear-gradient(90deg, #ff4500, #ff9d00);
+            background: linear-gradient(90deg, #8a6d3b, #d4af37, #8a6d3b);
+            background-size: 200% auto;
             clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-            transition: all 0.3s ease;
-            color: white;
+            transition: 0.5s;
+            color: black;
             font-weight: 900;
             text-transform: uppercase;
         }
 
         .btn-primary:hover {
+            background-position: right center;
             transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(255, 69, 0, 0.5);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
-        .btn-join {
-            background: #25D366;
-            color: white;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        .gold-text {
+            background: linear-gradient(to bottom, #f9e29b 20%, #d4af37 50%, #8a6d3b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+
+        .card-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
             transition: all 0.3s ease;
-            font-weight: 900;
-            text-transform: uppercase;
         }
 
-        .btn-join:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
-            filter: brightness(1.1);
-        }
-
-        .squad-card {
-            background: #111;
-            border: 1px solid rgba(255, 69, 0, 0.1);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .squad-card:hover {
-            border-color: var(--ff-fire);
+        .card-glass:hover {
+            border-color: var(--cup-gold);
+            background: rgba(212, 175, 55, 0.05);
             transform: translateY(-5px);
         }
 
-        .player-card-modern {
-            background: linear-gradient(135deg, #111 0%, #050505 100%);
-            border-left: 4px solid var(--ff-fire);
-            display: flex;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            min-height: 160px;
+        /* Tabla Estilo E-Sports */
+        .table-header {
+            background: linear-gradient(90deg, rgba(212,175,55,0.1) 0%, rgba(0,0,0,0) 100%);
+            border-left: 4px solid var(--cup-gold);
         }
 
-        .player-card-modern:hover {
-            border-left-color: #fff;
-            background: #1a1a1a;
-            transform: translateX(10px);
+        .table-row {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            transition: background 0.3s;
         }
 
-        .fire-text {
-            background: linear-gradient(to bottom, #fff 20%, #ff9d00 50%, #ff4500 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .table-row:hover {
+            background: rgba(212, 175, 55, 0.05);
         }
 
-        /* Biografía de Juego */
-        .bio-overlay {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at center, #1a0a05 0%, #080808 100%);
-            z-index: 200;
-            overflow-y: auto;
-            display: none;
-        }
-
-        .ability-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 69, 0, 0.3);
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .stat-bar-bg {
-            background: rgba(255, 255, 255, 0.1);
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .stat-bar-fill {
-            background: linear-gradient(90deg, var(--ff-fire), var(--ff-gold));
-            height: 100%;
-            width: 0%;
-            transition: width 1s ease-out;
-        }
+        /* Animación suave para cambio de vistas */
+        .view-transition { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .hidden-view { display: none; }
-        .view-transition { animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Etiquetas de estadísticas pequeñas */
-        .mini-stat {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 4px 8px;
-            border-radius: 2px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
 
     <!-- Navegación -->
-    <nav class="fixed w-full z-[100] bg-black/95 border-b-2 border-orange-600/30">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <nav class="fixed w-full z-[100] bg-black/90 border-b border-yellow-600/30 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-4 cursor-pointer" onclick="showView('home')">
-                <img src="6 may 2026, 04_57_19 p.m..png" alt="FF Logo" class="h-12 w-auto">
+                <div class="h-10 w-10 bg-gradient-to-br from-yellow-400 to-yellow-700 rounded-full flex items-center justify-center border border-white/20">
+                    <span class="text-black font-black font-orbitron">S</span>
+                </div>
                 <div class="leading-none">
-                    <span class="block font-orbitron font-black text-xl italic tracking-tighter uppercase">COPA <span class="text-orange-600">V. ETERNO</span></span>
-                    <span class="text-[9px] font-bold text-zinc-500 tracking-[.5em] uppercase">Free Fire Competitive</span>
+                    <span class="block font-orbitron font-black text-xl italic tracking-tighter uppercase gold-text">SANTA ISABEL <span class="text-white">CUP</span></span>
+                    <span class="text-[9px] font-bold text-zinc-500 tracking-[.4em] uppercase">Tournament Edition</span>
                 </div>
             </div>
-            <div class="hidden md:flex gap-10 items-center font-bold uppercase text-[12px] tracking-widest">
-                <button onclick="showView('home')" class="hover:text-orange-500 transition border-b-2 border-transparent hover:border-orange-500 pb-1">Inicio</button>
-                <button onclick="showView('teams')" class="hover:text-orange-500 transition border-b-2 border-transparent hover:border-orange-500 pb-1">Participantes</button>
-                <button onclick="showView('stats')" class="hover:text-orange-500 transition border-b-2 border-transparent hover:border-orange-500 pb-1">Puntajes</button>
+            <div class="hidden md:flex gap-8 items-center font-bold uppercase text-[12px] tracking-widest">
+                <button onclick="showView('home')" class="hover:text-yellow-500 transition">Inicio</button>
+                <button onclick="showView('teams')" class="hover:text-yellow-500 transition">Equipos</button>
+                <button onclick="showView('stats')" class="hover:text-yellow-500 transition">Tabla</button>
+                <button onclick="registerYourTeam()" class="bg-yellow-600 text-black px-4 py-2 rounded font-black hover:bg-yellow-500 transition">Inscribirse</button>
             </div>
         </div>
     </nav>
 
-    <!-- BIOGRAFÍA DE JUEGO (PERFIL DEL JUGADOR) -->
-    <div id="bio-view" class="bio-overlay view-transition">
-        <div class="container mx-auto px-6 py-24 relative min-h-screen flex flex-col items-center">
-            <!-- Botón Cerrar -->
-            <button onclick="closeBio()" class="fixed top-24 right-10 z-50 bg-white/10 hover:bg-orange-600 p-4 rounded-full transition-all group">
-                <i class="fas fa-times text-2xl group-hover:rotate-90 transition-transform"></i>
-            </button>
-
-            <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Lado Izquierdo: Imagen Grande -->
-                <div class="relative group">
-                    <div class="absolute -inset-4 bg-orange-600/20 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition duration-1000"></div>
-                    <div class="relative border-4 border-orange-600/50 rounded-2xl overflow-hidden aspect-[3/4] bg-black shadow-2xl">
-                        <img id="bio-photo" src="" class="w-full h-full object-cover">
-                        <div id="bio-photo-placeholder" class="hidden w-full h-full flex items-center justify-center text-8xl text-zinc-800">
-                            <i class="fas fa-user-ninja"></i>
-                        </div>
-                    </div>
+    <!-- VISTA: HOME (Banner Principal) -->
+    <main id="view-home" class="view-transition">
+        <section class="hero-section text-center px-6">
+            <div class="max-w-4xl">
+                <div class="inline-block px-4 py-1 border border-yellow-600/50 bg-yellow-600/10 text-yellow-500 font-bold text-xs tracking-[0.5em] uppercase mb-6 rounded-full">
+                    Competencia de Élite
                 </div>
-
-                <!-- Lado Derecho: Info -->
-                <div class="space-y-8">
-                    <div>
-                        <div class="flex items-center gap-2">
-                             <span id="bio-role" class="text-orange-600 font-black tracking-[0.4em] uppercase text-sm italic">ROL DEL JUGADOR</span>
-                             <span class="text-xl">🇵🇪</span>
-                        </div>
-                        <h2 id="bio-nick" class="text-7xl md:text-8xl font-orbitron font-black italic uppercase fire-text leading-none mt-2">NICKNAME</h2>
-                        <p id="bio-realname" class="text-zinc-400 font-bold text-xl uppercase tracking-widest mt-2 border-l-4 border-orange-600 pl-4">NOMBRE REAL</p>
-                    </div>
-
-                    <!-- Estadísticas Detalladas de Juego -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="bg-zinc-900/50 p-4 rounded border border-white/5 text-center">
-                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Estatus</span>
-                            <span id="bio-status" class="text-lg font-black italic font-orbitron text-green-500">TITULAR</span>
-                        </div>
-                        <div class="bg-zinc-900/50 p-4 rounded border border-white/5 text-center">
-                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Daño</span>
-                            <span class="text-lg font-black italic font-orbitron text-orange-500">0</span>
-                        </div>
-                        <div class="bg-zinc-900/50 p-4 rounded border border-white/5 text-center">
-                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Mapas</span>
-                            <span class="text-lg font-black italic font-orbitron">0</span>
-                        </div>
-                        <div class="bg-zinc-900/50 p-4 rounded border border-white/5 text-center">
-                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Bajas</span>
-                            <span class="text-lg font-black italic font-orbitron">0</span>
-                        </div>
-                    </div>
-
-                    <!-- Habilidades -->
-                    <div class="space-y-4">
-                        <h4 class="text-xs font-black uppercase tracking-[0.3em] text-white/50 flex items-center gap-2">
-                            <i class="fas fa-bolt text-yellow-500"></i> Habilidades de Combate
-                        </h4>
-                        <div id="bio-skills-container" class="grid grid-cols-2 gap-3"></div>
-                    </div>
-
-                    <!-- Atributos Visuales -->
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-end">
-                            <span class="text-[10px] font-black uppercase tracking-widest text-zinc-500">Impacto en Competitivo</span>
-                            <span class="text-xs font-bold">92%</span>
-                        </div>
-                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 92%"></div></div>
-                    </div>
+                <h1 class="text-6xl md:text-9xl font-orbitron font-black italic mb-2 tracking-tighter uppercase leading-none gold-text">SANTA ISABEL</h1>
+                <h2 class="text-5xl md:text-8xl font-orbitron font-black italic mb-8 tracking-tighter uppercase leading-none text-white">CUP 2026</h2>
+                <p class="text-lg md:text-xl text-zinc-400 font-medium tracking-widest mb-12 uppercase italic">
+                    La gloria te espera en el campo de batalla. <span class="text-yellow-600">Completa el formulario oficial.</span>
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <button onclick="showView('teams')" class="btn-primary italic text-xl px-12 py-5">Ver Rivales</button>
+                    <button onclick="registerYourTeam()" class="bg-white/5 hover:bg-white/10 border border-white/20 italic text-xl px-12 py-5 uppercase font-black transition-all">Formulario de Registro</button>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- VISTA: HOME -->
-    <main id="view-home" class="view-transition">
-        <section class="hero-section text-center px-6 pt-20">
-            <div class="z-10 max-w-5xl">
-                <img src="6 may 2026, 04_57_19 p.m..png" class="w-64 mx-auto mb-8 drop-shadow-[0_0_50px_rgba(255,69,0,0.6)]">
-                <h1 class="text-6xl md:text-9xl font-orbitron font-black italic mb-4 tracking-tighter uppercase leading-none fire-text">THE CROW</h1>
-                <p class="text-lg md:text-2xl text-orange-200/60 font-bold tracking-[0.5em] mb-12 italic uppercase">Puntos: 0 | Inscripciones Abiertas</p>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                    <button onclick="showView('teams')" class="btn-primary italic text-xl px-16 py-5">Ver Equipos</button>
-                    <button onclick="registerYourTeam()" class="btn-join italic text-xl px-16 py-5">Inscribe tu Equipo</button>
-                </div>
+        <!-- Sección de Info Rápida -->
+        <section class="py-24 container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card-glass p-8 text-center">
+                <i class="fas fa-trophy text-4xl text-yellow-600 mb-4"></i>
+                <h3 class="font-orbitron font-black text-xl mb-2">GRAN PREMIO</h3>
+                <p class="text-zinc-500 font-bold uppercase text-sm tracking-widest">En disputa por el mejor clan</p>
+            </div>
+            <div class="card-glass p-8 text-center">
+                <i class="fas fa-users text-4xl text-yellow-600 mb-4"></i>
+                <h3 class="font-orbitron font-black text-xl mb-2">EQUIPOS TOP</h3>
+                <p class="text-zinc-500 font-bold uppercase text-sm tracking-widest">Nivel competitivo asegurado</p>
+            </div>
+            <div class="card-glass p-8 text-center">
+                <i class="fas fa-broadcast-tower text-4xl text-yellow-600 mb-4"></i>
+                <h3 class="font-orbitron font-black text-xl mb-2">TRANSMISIÓN</h3>
+                <p class="text-zinc-500 font-bold uppercase text-sm tracking-widest">Cast en vivo por redes oficiales</p>
             </div>
         </section>
     </main>
 
-    <!-- VISTA: ESCUADRAS -->
+    <!-- VISTA: EQUIPOS -->
     <section id="view-teams" class="hidden-view py-32 container mx-auto px-6 view-transition">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-16 border-l-8 border-orange-600 pl-6 gap-6">
-            <div class="text-center md:text-left">
-                <h2 class="text-6xl font-orbitron font-black italic uppercase tracking-tighter">EQUIPOS <span class="text-orange-600">INSCRITOS</span></h2>
-                <p class="text-zinc-500 font-bold uppercase tracking-widest text-sm">Explora los clanes que participarán en la copa</p>
+        <div class="flex flex-col md:flex-row justify-between items-center mb-16 border-l-8 border-yellow-600 pl-6 gap-6">
+            <div>
+                <h2 class="text-6xl font-orbitron font-black italic uppercase tracking-tighter">EQUIPOS <span class="text-yellow-600">REGISTRADOS</span></h2>
+                <p class="text-zinc-500 font-bold uppercase tracking-widest text-sm">Escuadras confirmadas para el torneo</p>
             </div>
-            <!-- Botón de Registro para otros -->
-            <button onclick="registerYourTeam()" class="btn-join italic text-xl px-10 py-4 flex items-center gap-3">
-                <i class="fab fa-whatsapp text-2xl"></i> Inscribir mi equipo
+            <button onclick="registerYourTeam()" class="btn-primary italic text-xl px-10 py-4 flex items-center gap-3">
+                <i class="fas fa-file-signature text-2xl"></i> Inscribir Equipo
             </button>
         </div>
-        <div id="teams-grid" class="flex justify-center"></div>
+        <div id="teams-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </section>
 
-    <!-- VISTA: PUNTOS -->
+    <!-- VISTA: TABLA (Clasificación) -->
     <section id="view-stats" class="hidden-view py-32 container mx-auto px-6 view-transition">
-        <div class="flex justify-between items-end mb-16 border-b border-orange-600/30 pb-4">
-            <h2 class="text-6xl font-orbitron font-black italic uppercase tracking-tighter">TABLA DE <span class="text-orange-600">POSICIONES</span></h2>
+        <div class="mb-16 border-l-8 border-yellow-600 pl-6">
+            <h2 class="text-6xl font-orbitron font-black italic uppercase tracking-tighter text-white">TABLA DE <span class="text-yellow-600">POSICIONES</span></h2>
+            <p class="text-zinc-500 font-bold uppercase tracking-widest text-sm">Clasificación general en tiempo real</p>
         </div>
-        <div class="bg-black/40 p-1 border border-white/5 rounded">
-            <div class="overflow-x-auto">
-                <table class="stats-table w-full border-separate border-spacing-y-2">
-                    <thead>
-                        <tr class="text-orange-600 text-left text-[11px] uppercase tracking-[0.3em] font-black">
-                            <th class="p-6"># Pos</th>
-                            <th class="p-6">Equipo</th>
-                            <th class="p-6">Kills</th>
-                            <th class="p-6">Booyahs</th>
-                            <th class="p-6) Puntos">Puntos</th>
-                        </tr>
-                    </thead>
-                    <tbody id="leaderboard-body"></tbody>
-                </table>
-            </div>
+
+        <div class="overflow-x-auto card-glass p-4 md:p-8">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="table-header text-yellow-500 font-orbitron uppercase text-sm tracking-widest">
+                        <th class="py-4 px-6">Pos</th>
+                        <th class="py-4 px-6">Equipo</th>
+                        <th class="py-4 px-6 text-center">Kills</th>
+                        <th class="py-4 px-6 text-center">Booyah</th>
+                        <th class="py-4 px-6 text-center">Total Puntos</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <!-- Los datos se cargan vía JavaScript -->
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <!-- VISTA: DETALLE DE EQUIPO -->
-    <section id="view-team-details" class="hidden-view py-32 container mx-auto px-6 view-transition">
-        <div class="mb-16 flex flex-col md:flex-row items-center gap-12 p-8 bg-gradient-to-r from-orange-950/20 to-transparent border border-orange-600/20">
-            <div class="w-48 h-48 rounded border-4 border-orange-600 shadow-[0_0_30px_rgba(255,69,0,0.3)] overflow-hidden">
-                <img id="detail-team-logo" src="" class="w-full h-full object-cover">
-            </div>
-            <div class="text-center md:text-left">
-                <button onclick="showView('teams')" class="text-orange-600 mb-6 hover:text-white flex items-center gap-2 uppercase font-black text-xs tracking-widest transition">
-                    <i class="fas fa-chevron-left"></i> Volver a Equipos
-                </button>
-                <h2 id="detail-team-name" class="text-7xl font-orbitron font-black italic uppercase leading-none fire-text">NOMBRE</h2>
-                <p class="text-zinc-400 font-bold uppercase tracking-widest text-sm mt-4 italic">Selecciona un jugador para ver su Biografía de Juego</p>
-            </div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto" id="roster-container"></div>
-    </section>
-
+    <!-- Script de Funcionalidad -->
     <script>
+        // Lista de equipos limpia, solo con tu equipo principal
         const squads = [
             { id: 'the-crow', name: 'THE CROW', logo: 'logo de scuad.jpeg', kills: 0, booyahs: 0, points: 0 }
         ];
 
-        const mainTeamPlayers = [
-            { 
-                id: 1,
-                nick: 'KILLER', 
-                name: 'Beckham Laura', 
-                role: 'Granadero', 
-                photo: 'ChatGPT Image 6 may 2026, 05_02_10 p.m..png',
-                skills: ['Alok', 'Álvaro (R)', 'Kelly', 'Moco'],
-                status: 'Titular'
-            },
-            { 
-                id: 2,
-                nick: 'DEADLYSHOT', 
-                name: 'Pool Munive', 
-                role: 'L2 / IGL', 
-                photo: 'ChatGPT Image 6 may 2026, 06_33_47 p.m..png',
-                skills: ['Tatsuya', 'Andrew', 'Kelly', 'Jota'],
-                status: 'Titular'
-            },
-            { 
-                id: 3,
-                nick: 'TRUE', 
-                name: 'Max Josué', 
-                role: 'Soporte', 
-                photo: 'ChatGPT Image 6 may 2026, 06_52_44 p.m..png',
-                skills: ['Skyler', 'Rafael', 'Maro', 'Laura'],
-                status: 'Titular'
-            },
-            { 
-                id: 4,
-                nick: 'YISMA', 
-                name: 'Ysmael Marcos', 
-                role: 'Rusher L1', 
-                photo: 'ChatGPT Image 6 may 2026, 09_14_24 p.m..png',
-                skills: ['Orion', 'Miguel', 'Sonia', 'Luqueta'],
-                status: 'Titular'
-            },
-            { 
-                id: 5,
-                nick: 'NEY', 
-                name: 'Anthony Marcos', 
-                role: 'Rusher', 
-                photo: 'ChatGPT Image 6 may 2026, 09_37_28 p.m..png',
-                skills: ['K', 'Miguel', 'Kelly', 'Wolfrahh'],
-                status: 'Suplente'
-            },
-            { 
-                id: 6,
-                nick: 'CHAVAL', 
-                name: 'Farit Mallorca', 
-                role: 'Soporte', 
-                photo: null,
-                skills: ['Iris', 'Moco', 'Laura', 'Rafael'],
-                status: 'Suplente'
-            }
-        ];
-
+        // Función con el URL real proporcionado por el usuario
         function registerYourTeam() {
-            // Función para que OTROS inscriban a su equipo
-            const organizerPhone = "51926001644"; 
-            const message = encodeURIComponent("¡Hola! Quisiera inscribir a MI EQUIPO para participar en la Copa Vuelo Eterno. ¿Cuáles son los requisitos?");
-            const whatsappUrl = `https://wa.me/${organizerPhone}?text=${message}`;
-            
-            window.open(whatsappUrl, '_blank');
+            const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSclftgFX0_6YCCcu9INSZlVYfFCJTF5In0tR6XERIp8wkCCPQ/viewform?usp=publish-editor"; 
+            window.open(googleFormUrl, '_blank');
         }
 
-        function loadTeams() {
-            const grid = document.getElementById('teams-grid');
-            grid.innerHTML = squads.map(s => `
-                <div onclick="showTeamDetails('${s.id}')" class="squad-card group w-full max-w-sm">
-                    <div class="h-48 overflow-hidden bg-black">
-                        <img src="${s.logo}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 border-t border-white/5 text-center">
-                        <h3 class="font-orbitron font-black text-2xl italic group-hover:text-orange-500 transition uppercase">${s.name}</h3>
-                        <p class="text-[10px] text-zinc-600 tracking-widest font-black uppercase mt-1 italic">Ver Roster</p>
-                    </div>
-                </div>
-            `).join('');
+        function showView(name) {
+            ['home', 'teams', 'stats'].forEach(v => {
+                const el = document.getElementById('view-' + v);
+                if(el) el.classList.add('hidden-view');
+            });
+            const target = document.getElementById('view-' + name);
+            if(target) target.classList.remove('hidden-view');
+            window.scrollTo(0,0);
         }
 
-        function loadStats() {
+        function loadLeaderboard() {
             const body = document.getElementById('leaderboard-body');
-            body.innerHTML = squads.map((s, index) => `
-                <tr class="opacity-40">
-                    <td class="p-6 font-black text-2xl italic text-zinc-600">-</td>
-                    <td class="p-6">
+            if(!body) return;
+
+            // Ordenar por puntos (descendente)
+            const sortedSquads = [...squads].sort((a, b) => b.points - a.points);
+
+            body.innerHTML = sortedSquads.map((s, index) => `
+                <tr class="table-row font-bold">
+                    <td class="py-6 px-6">
+                        <span class="${index === 0 ? 'text-yellow-400 text-2xl' : 'text-white'} font-orbitron">#${index + 1}</span>
+                    </td>
+                    <td class="py-6 px-6">
                         <div class="flex items-center gap-4">
-                            <img src="${s.logo}" class="w-12 h-12 rounded border border-white/10 object-cover">
-                            <span class="font-black font-orbitron italic tracking-tighter text-lg uppercase">${s.name}</span>
+                            <img src="${s.logo}" class="w-10 h-10 rounded-full border border-yellow-600/30 object-cover" onerror="this.src='https://via.placeholder.com/40/000000/FFFFFF?text=TC'">
+                            <span class="uppercase tracking-widest text-lg">${s.name}</span>
                         </div>
                     </td>
-                    <td class="p-6 text-zinc-600 font-bold">${s.kills}</td>
-                    <td class="p-6 text-zinc-600 font-bold">${s.booyahs}</td>
-                    <td class="p-6 font-black text-zinc-600 text-2xl italic tracking-tighter">${s.points}</td>
+                    <td class="py-6 px-6 text-center text-zinc-400 font-orbitron">${s.kills}</td>
+                    <td class="py-6 px-6 text-center text-yellow-600 font-orbitron">${s.booyahs}</td>
+                    <td class="py-6 px-6 text-center">
+                        <span class="bg-yellow-600 text-black px-4 py-1 rounded font-black font-orbitron text-xl">
+                            ${s.points}
+                        </span>
+                    </td>
                 </tr>
             `).join('');
         }
 
-        function openBio(playerId) {
-            const player = mainTeamPlayers.find(p => p.id === playerId);
-            if (!player) return;
-
-            document.getElementById('bio-nick').innerText = player.nick;
-            document.getElementById('bio-realname').innerText = player.name;
-            document.getElementById('bio-role').innerText = player.role;
-            
-            const bioStatus = document.getElementById('bio-status');
-            bioStatus.innerText = player.status.toUpperCase();
-            bioStatus.className = player.status === 'Titular' ? 'text-lg font-black italic font-orbitron text-green-500' : 'text-lg font-black italic font-orbitron text-yellow-500';
-
-            const bioImg = document.getElementById('bio-photo');
-            const bioPlaceholder = document.getElementById('bio-photo-placeholder');
-            
-            if (player.photo) {
-                bioImg.src = player.photo;
-                bioImg.style.display = 'block';
-                bioPlaceholder.style.display = 'none';
-            } else {
-                bioImg.style.display = 'none';
-                bioPlaceholder.style.display = 'flex';
-            }
-
-            const skillsContainer = document.getElementById('bio-skills-container');
-            skillsContainer.innerHTML = player.skills.map((s, idx) => `
-                <div class="ability-badge ${idx === 0 ? 'border-orange-500 bg-orange-600/10' : ''}">
-                    <span class="block text-[9px] uppercase font-black text-zinc-500 mb-1 tracking-widest">${idx === 0 ? 'Activa' : 'Pasiva'}</span>
-                    <span class="text-sm font-black italic uppercase">${s}</span>
-                </div>
-            `).join('');
-
-            document.getElementById('bio-view').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeBio() {
-            document.getElementById('bio-view').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function showTeamDetails(id) {
-            const squad = squads.find(s => s.id === id);
-            
-            document.getElementById('detail-team-logo').src = squad.logo;
-            document.getElementById('detail-team-name').innerText = squad.name;
-            
-            const container = document.getElementById('roster-container');
-            container.innerHTML = mainTeamPlayers.map(p => `
-                <div class="player-card-modern group" onclick="openBio(${p.id})">
-                    <div class="w-32 bg-black flex items-center justify-center border-r border-white/5 overflow-hidden">
-                        ${p.photo ? `<img src="${p.photo}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">` : `<i class="fas fa-user-ninja text-4xl text-zinc-800"></i>`}
+        function loadTeams() {
+            const grid = document.getElementById('teams-grid');
+            if(!grid) return;
+            grid.innerHTML = squads.map(s => `
+                <div class="card-glass group overflow-hidden cursor-pointer">
+                    <div class="h-56 bg-black flex items-center justify-center relative overflow-hidden">
+                        <img src="${s.logo}" class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition duration-700" onerror="this.src='https://via.placeholder.com/300/000000/FFFFFF?text=${s.name}'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                     </div>
-                    <div class="p-5 flex-grow flex flex-col justify-between relative">
-                        <div>
-                            <div class="flex items-center justify-between mb-1">
-                                <div class="flex items-center gap-2">
-                                     <span class="text-[10px] font-black uppercase tracking-widest text-orange-600">${p.role}</span>
-                                     <span class="text-xs">🇵🇪</span>
-                                </div>
-                                <span class="text-[9px] font-black px-2 py-0.5 rounded border border-white/10 uppercase ${p.status === 'Titular' ? 'text-green-500' : 'text-yellow-500'}">${p.status}</span>
-                            </div>
-                            <h4 class="text-3xl font-black font-orbitron italic leading-none group-hover:text-orange-500 transition uppercase">${p.nick}</h4>
-                            <p class="text-zinc-500 text-[11px] font-bold uppercase tracking-widest">${p.name}</p>
-                        </div>
-                        
-                        <!-- Estadísticas en 0 -->
-                        <div class="grid grid-cols-3 gap-2 mt-4">
-                            <div class="mini-stat">
-                                <p class="text-[8px] text-zinc-500 uppercase font-bold">Daño</p>
-                                <p class="text-xs font-black font-orbitron">0</p>
-                            </div>
-                            <div class="mini-stat">
-                                <p class="text-[8px] text-zinc-500 uppercase font-bold">Mapas</p>
-                                <p class="text-xs font-black font-orbitron">0</p>
-                            </div>
-                            <div class="mini-stat">
-                                <p class="text-[8px] text-zinc-500 uppercase font-bold">Bajas</p>
-                                <p class="text-xs font-black font-orbitron">0</p>
-                            </div>
-                        </div>
+                    <div class="p-6 text-center">
+                        <h3 class="font-orbitron font-black text-2xl italic uppercase gold-text">${s.name}</h3>
+                        <p class="text-[10px] text-zinc-500 tracking-widest font-black uppercase mt-1 italic">Ver Alineación</p>
                     </div>
                 </div>
             `).join('');
-
-            showView('team-details');
-        }
-
-        function showView(name) {
-            ['home', 'teams', 'stats', 'team-details'].forEach(v => {
-                document.getElementById('view-' + v).classList.add('hidden-view');
-            });
-            document.getElementById('view-' + name).classList.remove('hidden-view');
-            window.scrollTo(0,0);
         }
 
         window.onload = () => {
             loadTeams();
-            loadStats();
+            loadLeaderboard();
         };
     </script>
 </body>
