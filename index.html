@@ -54,6 +54,21 @@
             box-shadow: 0 0 40px rgba(255, 69, 0, 0.5);
         }
 
+        .btn-join {
+            background: #25D366;
+            color: white;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            transition: all 0.3s ease;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .btn-join:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+            filter: brightness(1.1);
+        }
+
         .squad-card {
             background: #111;
             border: 1px solid rgba(255, 69, 0, 0.1);
@@ -75,6 +90,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
             cursor: pointer;
+            min-height: 160px;
         }
 
         .player-card-modern:hover {
@@ -124,6 +140,15 @@
         .hidden-view { display: none; }
         .view-transition { animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Etiquetas de estadísticas pequeñas */
+        .mini-stat {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 4px 8px;
+            border-radius: 2px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -140,7 +165,7 @@
             </div>
             <div class="hidden md:flex gap-10 items-center font-bold uppercase text-[12px] tracking-widest">
                 <button onclick="showView('home')" class="hover:text-orange-500 transition border-b-2 border-transparent hover:border-orange-500 pb-1">Inicio</button>
-                <button onclick="showView('teams')" class="hover:text-orange-500 transition border-b-2 border-transparent hover:border-orange-500 pb-1">Mi Equipo</button>
+                <button onclick="showView('teams')" class="hover:text-orange-500 transition border-b-2 border-transparent hover:border-orange-500 pb-1">Participantes</button>
                 <button onclick="showView('stats')" class="hover:text-orange-500 transition border-b-2 border-transparent hover:border-orange-500 pb-1">Puntajes</button>
             </div>
         </div>
@@ -169,24 +194,31 @@
                 <!-- Lado Derecho: Info -->
                 <div class="space-y-8">
                     <div>
-                        <span id="bio-role" class="text-orange-600 font-black tracking-[0.4em] uppercase text-sm italic">ROL DEL JUGADOR</span>
+                        <div class="flex items-center gap-2">
+                             <span id="bio-role" class="text-orange-600 font-black tracking-[0.4em] uppercase text-sm italic">ROL DEL JUGADOR</span>
+                             <span class="text-xl">🇵🇪</span>
+                        </div>
                         <h2 id="bio-nick" class="text-7xl md:text-8xl font-orbitron font-black italic uppercase fire-text leading-none mt-2">NICKNAME</h2>
                         <p id="bio-realname" class="text-zinc-400 font-bold text-xl uppercase tracking-widest mt-2 border-l-4 border-orange-600 pl-4">NOMBRE REAL</p>
                     </div>
 
-                    <!-- Estadísticas de Juego -->
-                    <div class="grid grid-cols-3 gap-4">
+                    <!-- Estadísticas Detalladas de Juego -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div class="bg-zinc-900/50 p-4 rounded border border-white/5 text-center">
-                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Nivel</span>
-                            <span class="text-2xl font-black italic font-orbitron text-orange-500">70+</span>
+                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Estatus</span>
+                            <span id="bio-status" class="text-lg font-black italic font-orbitron text-green-500">TITULAR</span>
                         </div>
                         <div class="bg-zinc-900/50 p-4 rounded border border-white/5 text-center">
-                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Rango</span>
-                            <span class="text-2xl font-black italic font-orbitron text-blue-400">GMA</span>
+                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Daño</span>
+                            <span class="text-lg font-black italic font-orbitron text-orange-500">0</span>
                         </div>
                         <div class="bg-zinc-900/50 p-4 rounded border border-white/5 text-center">
-                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">K/D</span>
-                            <span class="text-2xl font-black italic font-orbitron">4.50</span>
+                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Mapas</span>
+                            <span class="text-lg font-black italic font-orbitron">0</span>
+                        </div>
+                        <div class="bg-zinc-900/50 p-4 rounded border border-white/5 text-center">
+                            <span class="block text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Bajas</span>
+                            <span class="text-lg font-black italic font-orbitron">0</span>
                         </div>
                     </div>
 
@@ -217,10 +249,10 @@
             <div class="z-10 max-w-5xl">
                 <img src="6 may 2026, 04_57_19 p.m..png" class="w-64 mx-auto mb-8 drop-shadow-[0_0_50px_rgba(255,69,0,0.6)]">
                 <h1 class="text-6xl md:text-9xl font-orbitron font-black italic mb-4 tracking-tighter uppercase leading-none fire-text">THE CROW</h1>
-                <p class="text-lg md:text-2xl text-orange-200/60 font-bold tracking-[0.5em] mb-12 italic uppercase">Puntos: 0 | Próximamente Inicio</p>
+                <p class="text-lg md:text-2xl text-orange-200/60 font-bold tracking-[0.5em] mb-12 italic uppercase">Puntos: 0 | Inscripciones Abiertas</p>
                 <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                    <button onclick="showView('teams')" class="btn-primary italic text-xl px-16 py-5">Ver Roster</button>
-                    <button onclick="showView('stats')" class="bg-white/5 hover:bg-white/10 border border-white/20 italic text-xl px-16 py-5 uppercase font-black transition">Resultados</button>
+                    <button onclick="showView('teams')" class="btn-primary italic text-xl px-16 py-5">Ver Equipos</button>
+                    <button onclick="registerYourTeam()" class="btn-join italic text-xl px-16 py-5">Inscribe tu Equipo</button>
                 </div>
             </div>
         </section>
@@ -228,9 +260,15 @@
 
     <!-- VISTA: ESCUADRAS -->
     <section id="view-teams" class="hidden-view py-32 container mx-auto px-6 view-transition">
-        <div class="mb-16 border-l-8 border-orange-600 pl-6 text-center md:text-left">
-            <h2 class="text-6xl font-orbitron font-black italic uppercase tracking-tighter">EQUIPO <span class="text-orange-600">PRINCIPAL</span></h2>
-            <p class="text-zinc-500 font-bold uppercase tracking-widest text-sm">Selecciona el equipo para ver los integrantes</p>
+        <div class="flex flex-col md:flex-row justify-between items-center mb-16 border-l-8 border-orange-600 pl-6 gap-6">
+            <div class="text-center md:text-left">
+                <h2 class="text-6xl font-orbitron font-black italic uppercase tracking-tighter">EQUIPOS <span class="text-orange-600">INSCRITOS</span></h2>
+                <p class="text-zinc-500 font-bold uppercase tracking-widest text-sm">Explora los clanes que participarán en la copa</p>
+            </div>
+            <!-- Botón de Registro para otros -->
+            <button onclick="registerYourTeam()" class="btn-join italic text-xl px-10 py-4 flex items-center gap-3">
+                <i class="fab fa-whatsapp text-2xl"></i> Inscribir mi equipo
+            </button>
         </div>
         <div id="teams-grid" class="flex justify-center"></div>
     </section>
@@ -249,7 +287,7 @@
                             <th class="p-6">Equipo</th>
                             <th class="p-6">Kills</th>
                             <th class="p-6">Booyahs</th>
-                            <th class="p-6">Puntos</th>
+                            <th class="p-6) Puntos">Puntos</th>
                         </tr>
                     </thead>
                     <tbody id="leaderboard-body"></tbody>
@@ -288,7 +326,8 @@
                 name: 'Beckham Laura', 
                 role: 'Granadero', 
                 photo: 'ChatGPT Image 6 may 2026, 05_02_10 p.m..png',
-                skills: ['Alok', 'Álvaro (R)', 'Kelly', 'Moco']
+                skills: ['Alok', 'Álvaro (R)', 'Kelly', 'Moco'],
+                status: 'Titular'
             },
             { 
                 id: 2,
@@ -296,7 +335,8 @@
                 name: 'Pool Munive', 
                 role: 'L2 / IGL', 
                 photo: 'ChatGPT Image 6 may 2026, 06_33_47 p.m..png',
-                skills: ['Tatsuya', 'Andrew', 'Kelly', 'Jota']
+                skills: ['Tatsuya', 'Andrew', 'Kelly', 'Jota'],
+                status: 'Titular'
             },
             { 
                 id: 3,
@@ -304,7 +344,8 @@
                 name: 'Max Josué', 
                 role: 'Soporte', 
                 photo: 'ChatGPT Image 6 may 2026, 06_52_44 p.m..png',
-                skills: ['Skyler', 'Rafael', 'Maro', 'Laura']
+                skills: ['Skyler', 'Rafael', 'Maro', 'Laura'],
+                status: 'Titular'
             },
             { 
                 id: 4,
@@ -312,7 +353,8 @@
                 name: 'Ysmael Marcos', 
                 role: 'Rusher L1', 
                 photo: 'ChatGPT Image 6 may 2026, 09_14_24 p.m..png',
-                skills: ['Orion', 'Miguel', 'Sonia', 'Luqueta']
+                skills: ['Orion', 'Miguel', 'Sonia', 'Luqueta'],
+                status: 'Titular'
             },
             { 
                 id: 5,
@@ -320,7 +362,8 @@
                 name: 'Anthony Marcos', 
                 role: 'Rusher', 
                 photo: 'ChatGPT Image 6 may 2026, 09_37_28 p.m..png',
-                skills: ['K', 'Miguel', 'Kelly', 'Wolfrahh']
+                skills: ['K', 'Miguel', 'Kelly', 'Wolfrahh'],
+                status: 'Suplente'
             },
             { 
                 id: 6,
@@ -328,9 +371,19 @@
                 name: 'Farit Mallorca', 
                 role: 'Soporte', 
                 photo: null,
-                skills: ['Iris', 'Moco', 'Laura', 'Rafael']
+                skills: ['Iris', 'Moco', 'Laura', 'Rafael'],
+                status: 'Suplente'
             }
         ];
+
+        function registerYourTeam() {
+            // Función para que OTROS inscriban a su equipo
+            const organizerPhone = "51926001644"; 
+            const message = encodeURIComponent("¡Hola! Quisiera inscribir a MI EQUIPO para participar en la Copa Vuelo Eterno. ¿Cuáles son los requisitos?");
+            const whatsappUrl = `https://wa.me/${organizerPhone}?text=${message}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
 
         function loadTeams() {
             const grid = document.getElementById('teams-grid');
@@ -373,6 +426,10 @@
             document.getElementById('bio-realname').innerText = player.name;
             document.getElementById('bio-role').innerText = player.role;
             
+            const bioStatus = document.getElementById('bio-status');
+            bioStatus.innerText = player.status.toUpperCase();
+            bioStatus.className = player.status === 'Titular' ? 'text-lg font-black italic font-orbitron text-green-500' : 'text-lg font-black italic font-orbitron text-yellow-500';
+
             const bioImg = document.getElementById('bio-photo');
             const bioPlaceholder = document.getElementById('bio-photo-placeholder');
             
@@ -411,13 +468,37 @@
             const container = document.getElementById('roster-container');
             container.innerHTML = mainTeamPlayers.map(p => `
                 <div class="player-card-modern group" onclick="openBio(${p.id})">
-                    <div class="w-32 h-32 bg-black flex items-center justify-center border-r border-white/5 overflow-hidden">
+                    <div class="w-32 bg-black flex items-center justify-center border-r border-white/5 overflow-hidden">
                         ${p.photo ? `<img src="${p.photo}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">` : `<i class="fas fa-user-ninja text-4xl text-zinc-800"></i>`}
                     </div>
-                    <div class="p-5 flex-grow flex flex-col justify-center relative">
-                        <span class="text-[10px] font-black uppercase tracking-widest text-orange-600">${p.role}</span>
-                        <h4 class="text-3xl font-black font-orbitron italic leading-none mb-1 group-hover:text-orange-500 transition uppercase">${p.nick}</h4>
-                        <p class="text-zinc-500 text-[11px] font-bold uppercase tracking-widest">${p.name}</p>
+                    <div class="p-5 flex-grow flex flex-col justify-between relative">
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <div class="flex items-center gap-2">
+                                     <span class="text-[10px] font-black uppercase tracking-widest text-orange-600">${p.role}</span>
+                                     <span class="text-xs">🇵🇪</span>
+                                </div>
+                                <span class="text-[9px] font-black px-2 py-0.5 rounded border border-white/10 uppercase ${p.status === 'Titular' ? 'text-green-500' : 'text-yellow-500'}">${p.status}</span>
+                            </div>
+                            <h4 class="text-3xl font-black font-orbitron italic leading-none group-hover:text-orange-500 transition uppercase">${p.nick}</h4>
+                            <p class="text-zinc-500 text-[11px] font-bold uppercase tracking-widest">${p.name}</p>
+                        </div>
+                        
+                        <!-- Estadísticas en 0 -->
+                        <div class="grid grid-cols-3 gap-2 mt-4">
+                            <div class="mini-stat">
+                                <p class="text-[8px] text-zinc-500 uppercase font-bold">Daño</p>
+                                <p class="text-xs font-black font-orbitron">0</p>
+                            </div>
+                            <div class="mini-stat">
+                                <p class="text-[8px] text-zinc-500 uppercase font-bold">Mapas</p>
+                                <p class="text-xs font-black font-orbitron">0</p>
+                            </div>
+                            <div class="mini-stat">
+                                <p class="text-[8px] text-zinc-500 uppercase font-bold">Bajas</p>
+                                <p class="text-xs font-black font-orbitron">0</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `).join('');
