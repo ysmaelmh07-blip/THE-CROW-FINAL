@@ -22,6 +22,7 @@
             --ff-bg: #050505;
             --ff-card: rgba(255, 255, 255, 0.02);
             --neon-blue: #00f2ff;
+            --pulpos-purple: #8b5cf6;
         }
 
         body {
@@ -78,7 +79,6 @@
             box-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
         }
 
-        /* ESTILOS DE TABLA Y ESTADISTICAS */
         .stats-card {
             background: rgba(20, 20, 20, 0.6);
             border: 1px solid rgba(212, 175, 55, 0.1);
@@ -90,15 +90,6 @@
         .stats-card:hover {
             border-color: var(--cup-gold);
             transform: translateY(-5px);
-        }
-
-        .leaderboard-row {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            transition: background 0.3s;
-        }
-
-        .leaderboard-row:hover {
-            background: rgba(212, 175, 55, 0.05);
         }
 
         .player-card {
@@ -161,6 +152,18 @@
             gap: 15px;
             backdrop-filter: blur(10px);
         }
+        
+        .skill-screenshot {
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-screenshot:hover {
+            transform: scale(1.02);
+            border-color: var(--cup-gold);
+        }
     </style>
 </head>
 <body>
@@ -219,81 +222,44 @@
             <h2 class="text-5xl md:text-8xl font-orbitron font-black italic gold-text uppercase text-center leading-none">EQUIPOS <span class="text-white">REGISTRADOS</span></h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <!-- Equipo 1: THE CROW -->
+            <!-- Equipo 1 -->
             <div onclick="renderRoster('THE CROW')" class="bg-[#0c0c0c] border border-yellow-600/20 p-8 rounded-2xl cursor-pointer hover:border-yellow-500 transition-all group relative">
                 <img src="logo de scuad.jpeg" class="w-full h-64 object-cover rounded-xl mb-6 group-hover:scale-105 transition duration-700">
                 <h3 class="font-orbitron font-black text-4xl italic uppercase text-center gold-text">THE CROW</h3>
                 <p class="text-center text-zinc-500 text-xs mt-2 font-bold tracking-[0.3em]">REPRESENTANTE OFICIAL</p>
             </div>
 
-            <!-- Equipo 2: TITÁN FF (Logo Actualizado) -->
-            <div onclick="renderRoster('TITÁN FF')" class="bg-[#0c0c0c] border border-orange-600/20 p-8 rounded-2xl cursor-pointer hover:border-orange-500 transition-all group relative">
+            <!-- Equipo 2 (LOS PULPOS) -->
+            <div onclick="renderRoster('LOS PULPOS')" class="bg-[#0c0c0c] border border-purple-600/20 p-8 rounded-2xl cursor-pointer hover:border-purple-500 transition-all group relative">
                 <div class="w-full h-64 bg-black flex items-center justify-center rounded-xl mb-6 group-hover:scale-105 transition duration-700 overflow-hidden border border-zinc-800">
-                     <img src="titan ff.png" class="w-full h-full object-contain">
+                     <img src="los pulpos.png" class="w-full h-full object-contain p-4">
                 </div>
-                <h3 class="font-orbitron font-black text-4xl italic uppercase text-center text-white group-hover:text-orange-400 transition-colors">TITÁN FF</h3>
+                <h3 class="font-orbitron font-black text-4xl italic uppercase text-center text-white group-hover:text-purple-400 transition-colors">LOS PULPOS</h3>
                 <p class="text-center text-zinc-500 text-xs mt-2 font-bold tracking-[0.3em]">RETADOR SELECCIONADO</p>
             </div>
         </div>
     </section>
 
-    <!-- VISTA: ESTADÍSTICAS Y TABLA -->
+    <!-- VISTA: ESTADÍSTICAS -->
     <section id="view-stats" class="hidden-view pt-40 pb-20 container mx-auto px-6 fade-in">
         <div class="flex flex-col items-center mb-16">
             <h2 class="text-5xl md:text-7xl font-orbitron font-black italic gold-text uppercase text-center leading-none">DATOS DEL <span class="text-white">TORNEO</span></h2>
-            <p class="text-zinc-500 font-bold tracking-[0.5em] mt-4 uppercase text-xs">Torneo Próximamente • Temporada 2026</p>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div class="stats-card p-8 flex flex-col items-center opacity-60">
-                <div class="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-4 border border-zinc-700">
-                    <i class="fas fa-trophy text-3xl text-zinc-600"></i>
-                </div>
+             <div class="stats-card p-8 flex flex-col items-center opacity-60">
+                <div class="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-4 border border-zinc-700"><i class="fas fa-trophy text-3xl text-zinc-600"></i></div>
                 <h4 class="font-orbitron text-xl font-bold">FAVORITO ACTUAL</h4>
                 <p class="text-white text-3xl font-black italic mt-2">—</p>
             </div>
-
-            <div class="stats-card p-8 flex flex-col items-center mvp-badge opacity-60">
-                <div class="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-4 border border-zinc-700">
-                    <i class="fas fa-crown text-3xl text-zinc-600"></i>
-                </div>
+            <div class="stats-card p-8 flex flex-col items-center opacity-60">
+                <div class="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-4 border border-zinc-700"><i class="fas fa-crown text-3xl text-zinc-600"></i></div>
                 <h4 class="font-orbitron text-xl font-bold">MVP LÍDER</h4>
                 <p class="text-white text-3xl font-black italic mt-2 uppercase">—</p>
             </div>
-
             <div class="stats-card p-8 flex flex-col items-center opacity-60">
-                <div class="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-4 border border-zinc-700">
-                    <i class="fas fa-bolt text-3xl text-zinc-600"></i>
-                </div>
+                <div class="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-4 border border-zinc-700"><i class="fas fa-bolt text-3xl text-zinc-600"></i></div>
                 <h4 class="font-orbitron text-xl font-bold">MEJOR DÚO</h4>
                 <p class="text-white text-2xl font-black italic mt-2 uppercase">—</p>
-            </div>
-        </div>
-
-        <div class="bg-black/80 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl">
-            <div class="p-8 bg-zinc-900/50 border-b border-zinc-800 flex justify-between items-center">
-                <h3 class="font-orbitron font-black text-2xl italic gold-text tracking-widest">LEADERBOARD GENERAL</h3>
-                <span class="bg-zinc-700 px-3 py-1 text-[10px] font-black rounded-full">PRE-TORNEO</span>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                    <thead class="bg-black text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em]">
-                        <tr>
-                            <th class="p-6">Rango</th>
-                            <th class="p-6">Escuadrón</th>
-                            <th class="p-6">Puntos</th>
-                            <th class="p-6">Kills</th>
-                            <th class="p-6">Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody class="font-bold">
-                        <tr class="leaderboard-row">
-                            <td colspan="5" class="p-20 text-center text-zinc-600 font-orbitron uppercase tracking-widest italic">
-                                Esperando inicio del torneo
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </section>
@@ -337,6 +303,13 @@
                             <p id="modal-name" class="text-zinc-400 font-bold text-2xl uppercase tracking-widest">NOMBRE REAL</p>
                         </div>
                     </div>
+                    
+                    <!-- Contenedor de Captura de Pantalla de Habilidades (Solo se muestra si existe y no es Daimer) -->
+                    <div id="modal-skills-img-container" class="space-y-4">
+                        <h4 id="skills-title" class="text-white font-orbitron font-bold uppercase tracking-widest text-sm italic">Configuración de Habilidades:</h4>
+                        <img id="modal-skill-screenshot" src="" class="skill-screenshot w-full h-auto">
+                    </div>
+
                     <div id="modal-skills" class="grid grid-cols-2 gap-4"></div>
                 </div>
             </div>
@@ -345,6 +318,7 @@
 
     <script>
         const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSclftgFX0_6YCCcu9INSZlVYfFCJTF5In0tR6XERIp8wkCCPQ/viewform?usp=publish-editor";
+        let currentActiveTeam = '';
 
         const iconConfigs = {
             'RED': { path: 'l1 o l2.png', glow: 'glow-red' },
@@ -354,23 +328,27 @@
 
         const allPlayers = {
             'THE CROW': [
-                { nick: 'KILLER', name: 'Beckham Laura', role: 'Granadero', img: 'ChatGPT Image 6 may 2026, 05_02_10 p.m..png', skills: ['Alok', 'Álvaro (R)', 'Kelly', 'Moco'], iconType: 'GOLD' },
-                { nick: 'DEADLYSHOT', name: 'Pool Munive', role: 'L2 / IGL', img: 'ChatGPT Image 6 may 2026, 06_33_47 p.m..png', skills: ['Tatsuya', 'Andrew', 'Kelly', 'Jota'], iconType: 'RED' },
-                { nick: 'TRUE', name: 'Max Josué', role: 'Soporte', img: 'ChatGPT Image 6 may 2026, 06_52_44 p.m..png', skills: ['Skyler', 'Rafael', 'Maro', 'Laura'], iconType: 'BLUE' },
-                { nick: 'YISMA', name: 'Ysmael Marcos', role: 'Rusher L1', img: 'ChatGPT Image 6 may 2026, 09_14_24 p.m..png', skills: ['Orion', 'Miguel', 'Sonia', 'Luqueta'], iconType: 'RED' },
-                { nick: 'NEY', name: 'Anthony Marcos', role: 'Soporte', img: 'ChatGPT Image 6 may 2026, 09_37_28 p.m..png', skills: ['K', 'Miguel', 'Kelly', 'Wolfrahh'], iconType: 'BLUE' },
-                { nick: 'CHAVAL', name: 'Farit Mayorca', role: 'Soporte', img: null, skills: ['Iris', 'Moco', 'Laura', 'Rafael'], iconType: 'BLUE' }
+                { nick: 'KILLER', name: 'Beckham Laura', role: 'Granadero', img: 'ChatGPT Image 6 may 2026, 05_02_10 p.m..png', skills: ['Alok', 'Álvaro (R)', 'Kelly', 'Moco'], iconType: 'GOLD', skillImg: null },
+                { nick: 'DEADLYSHOT', name: 'Pool Munive', role: 'L2 / IGL', img: 'ChatGPT Image 6 may 2026, 06_33_47 p.m..png', skills: ['Tatsuya', 'Andrew', 'Kelly', 'Jota'], iconType: 'RED', skillImg: null },
+                { nick: 'TRUE', name: 'Max Josué', role: 'Soporte', img: 'ChatGPT Image 6 may 2026, 06_52_44 p.m..png', skills: ['Skyler', 'Rafael', 'Maro', 'Laura'], iconType: 'BLUE', skillImg: null },
+                { nick: 'YISMA', name: 'Ysmael Marcos', role: 'Rusher L1', img: 'ChatGPT Image 6 may 2026, 09_14_24 p.m..png', skills: ['Orion', 'Miguel', 'Sonia', 'Luqueta'], iconType: 'RED', skillImg: null },
+                { nick: 'NEY', name: 'Anthony Marcos', role: 'Soporte', img: 'ChatGPT Image 6 may 2026, 09_37_28 p.m..png', skills: ['K', 'Miguel', 'Kelly', 'Wolfrahh'], iconType: 'BLUE', skillImg: null },
+                { nick: 'CHAVAL', name: 'Farit Mayorca', role: 'Soporte', img: null, skills: ['Iris', 'Moco', 'Laura', 'Rafael'], iconType: 'BLUE', skillImg: null }
             ],
-            'TITÁN FF': [
-                { nick: 'BYRON', name: 'Byron', role: 'Rusher', img: null, skills: ['Tatsuya', 'Kelly', 'Moco', 'Alok'], iconType: 'RED' },
-                { nick: 'JEFFERSON', name: 'Jefferson', role: 'Soporte', img: null, skills: ['Skyler', 'Andrew', 'Rafael', 'Laura'], iconType: 'BLUE' },
-                { nick: 'JAIDEN', name: 'Jaiden', role: 'Granadero', img: null, skills: ['Alvaro', 'Kelly', 'Moco', 'Luqueta'], iconType: 'GOLD' },
-                { nick: 'KELVIN', name: 'Kelvin', role: 'Rusher', img: null, skills: ['Tatsuya', 'Jota', 'Sonia', 'Kelly'], iconType: 'RED' },
-                { nick: 'DAIMER', name: 'Daimer', role: 'Soporte', img: null, skills: ['K', 'Miguel', 'Wolfrahh', 'Andrew'], iconType: 'BLUE' }
+            'LOS PULPOS': [
+                { nick: 'BYRON', name: 'Byron', role: 'Rusher', img: null, skills: ['Tatsuya', 'Kelly', 'Moco', 'Alok'], iconType: 'RED', skillImg: 'hablidadess 1.jpeg' },
+                { nick: 'JEFFERSON', name: 'Jefferson', role: 'Soporte', img: null, skills: ['Skyler', 'Andrew', 'Rafael', 'Laura'], iconType: 'BLUE', skillImg: 'hablidades 2.jpeg' },
+                { nick: 'JEISON', name: 'Jeison', role: 'Granadero', img: null, skills: ['Alvaro', 'Kelly', 'Moco', 'Luqueta'], iconType: 'GOLD', skillImg: 'hablidades 3.jpeg' },
+                { nick: 'KELVIN', name: 'Kelvin', role: 'Rusher', img: null, skills: ['Tatsuya', 'Jota', 'Sonia', 'Kelly'], iconType: 'RED', skillImg: 'hablidades 4.jpeg' },
+                { nick: 'DAIMER', name: 'Daimer', role: 'Soporte', img: 'ChatGPT Image 11 may 2026, 04_15_48 p.m..png', skills: ['K', 'Miguel', 'Wolfrahh', 'Andrew'], iconType: 'BLUE', hideSkillPreview: true }
             ]
         };
 
-        function openRegistration() { window.open(GOOGLE_FORM_URL, '_blank'); }
+        function showView(viewId) {
+            document.querySelectorAll('[id^="view-"]').forEach(v => v.classList.add('hidden-view'));
+            document.getElementById('view-' + viewId).classList.remove('hidden-view');
+            window.scrollTo(0,0);
+        }
 
         function toggleMusic() {
             const audio = document.getElementById('bg-audio');
@@ -389,29 +367,12 @@
             }
         }
 
-        function showView(viewId) {
-            document.querySelectorAll('[id^="view-"]').forEach(v => v.classList.add('hidden-view'));
-            document.getElementById('view-' + viewId).classList.remove('hidden-view');
-            window.scrollTo(0,0);
-        }
-
-        function getIconHtml(player, isSmall = true) {
-            if (!player.iconType || !iconConfigs[player.iconType]) return '';
-            const config = iconConfigs[player.iconType];
-            const sizeClass = isSmall ? 'h-6' : 'h-12 ml-4';
-            return `<img src="${config.path}" class="role-badge-img ${config.glow} ${sizeClass}">`;
-        }
-
-        let currentActiveTeam = '';
-
         function renderRoster(teamName) {
             currentActiveTeam = teamName;
             const container = document.getElementById('players-list');
             const title = document.getElementById('roster-title');
             title.innerText = teamName;
-            
             const players = allPlayers[teamName];
-            
             container.innerHTML = players.map((p, idx) => `
                 <div class="player-card p-6 flex items-center gap-6 rounded-lg group" onclick="openBio(${idx})">
                     <div class="w-24 h-24 bg-black rounded overflow-hidden flex-shrink-0 border border-yellow-900/30 group-hover:border-yellow-500 transition-all">
@@ -429,21 +390,44 @@
             showView('roster');
         }
 
+        function getIconHtml(player, isSmall = true) {
+            if (!player.iconType || !iconConfigs[player.iconType]) return '';
+            const config = iconConfigs[player.iconType];
+            const sizeClass = isSmall ? 'h-6' : 'h-12 ml-4';
+            return `<img src="${config.path}" class="role-badge-img ${config.glow} ${sizeClass}">`;
+        }
+
         function openBio(idx) {
             const p = allPlayers[currentActiveTeam][idx];
             document.getElementById('modal-nick').innerText = p.nick;
             document.getElementById('modal-name').innerText = p.name;
             document.getElementById('modal-role').innerText = p.role;
             document.getElementById('modal-role-icon-container').innerHTML = getIconHtml(p, false);
+            
             const img = document.getElementById('modal-img');
             const placeholder = document.getElementById('modal-placeholder');
             if(p.img) { img.src = p.img; img.style.display = 'block'; placeholder.style.display = 'none'; }
             else { img.style.display = 'none'; placeholder.style.display = 'flex'; }
+            
+            // Lógica para mostrar/ocultar previsualización de habilidades
+            const skillContainer = document.getElementById('modal-skills-img-container');
+            const skillImg = document.getElementById('modal-skill-screenshot');
+            
+            if(p.hideSkillPreview) {
+                 skillContainer.style.display = 'none';
+            } else if(p.skillImg) {
+                skillImg.src = p.skillImg;
+                skillContainer.style.display = 'block';
+            } else {
+                skillContainer.style.display = 'none';
+            }
+
             document.getElementById('modal-skills').innerHTML = p.skills.map(s => `<div class="bg-yellow-900/10 border border-yellow-600/20 p-4 rounded text-center"><span class="text-sm font-black uppercase text-yellow-500">${s}</span></div>`).join('');
             document.getElementById('bio-modal').style.display = 'block';
         }
 
         function closeBio() { document.getElementById('bio-modal').style.display = 'none'; }
+        function openRegistration() { window.open(GOOGLE_FORM_URL, '_blank'); }
     </script>
 </body>
 </html>
