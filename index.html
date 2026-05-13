@@ -23,6 +23,7 @@
             --ff-card: rgba(255, 255, 255, 0.02);
             --neon-blue: #00f2ff;
             --pulpos-purple: #8b5cf6;
+            --garra-red: #ff3131;
         }
 
         body {
@@ -221,7 +222,7 @@
         <div class="flex flex-col items-center mb-20">
             <h2 class="text-5xl md:text-8xl font-orbitron font-black italic gold-text uppercase text-center leading-none">EQUIPOS <span class="text-white">REGISTRADOS</span></h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
             <!-- Equipo 1 -->
             <div onclick="renderRoster('THE CROW')" class="bg-[#0c0c0c] border border-yellow-600/20 p-8 rounded-2xl cursor-pointer hover:border-yellow-500 transition-all group relative">
                 <img src="logo de scuad.jpeg" class="w-full h-64 object-cover rounded-xl mb-6 group-hover:scale-105 transition duration-700">
@@ -236,6 +237,15 @@
                 </div>
                 <h3 class="font-orbitron font-black text-4xl italic uppercase text-center text-white group-hover:text-purple-400 transition-colors">LOS PULPOS</h3>
                 <p class="text-center text-zinc-500 text-xs mt-2 font-bold tracking-[0.3em]">RETADOR SELECCIONADO</p>
+            </div>
+
+            <!-- Equipo 3 (GARRAPACHERIA) -->
+            <div onclick="renderRoster('GARRAPACHERIA')" class="bg-[#0c0c0c] border border-red-600/20 p-8 rounded-2xl cursor-pointer hover:border-red-500 transition-all group relative">
+                <div class="w-full h-64 bg-black flex items-center justify-center rounded-xl mb-6 group-hover:scale-105 transition duration-700 overflow-hidden border border-zinc-800">
+                     <img src="Captura de pantalla 2026-05-12 150237.png" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-orbitron font-black text-4xl italic uppercase text-center text-white group-hover:text-red-500 transition-colors">GARRAPACHERIA</h3>
+                <p class="text-center text-zinc-500 text-xs mt-2 font-bold tracking-[0.3em]">CLAN ASPIRANTE</p>
             </div>
         </div>
     </section>
@@ -341,6 +351,14 @@
                 { nick: 'JEISON', name: 'Jeison', role: 'Granadero', img: 'ChatGPT Image 11 may 2026, 10_08_49 p.m..png', skills: ['Alvaro', 'Kelly', 'Moco', 'Luqueta'], iconType: 'GOLD', skillImg: 'hablidades 3.jpeg' },
                 { nick: 'KELVYN', name: 'Kelvyn', role: 'Rusher', img: 'ChatGPT Image 11 may 2026, 10_02_21 p.m..png', skills: ['Tatsuya', 'Jota', 'Sonia', 'Kelly'], iconType: 'RED', skillImg: 'hablidades 4.jpeg' },
                 { nick: 'DAIMER', name: 'Daimer', role: 'Soporte', img: 'ChatGPT Image 11 may 2026, 04_15_48 p.m..png', skills: ['K', 'Miguel', 'Wolfrahh', 'Andrew'], iconType: 'BLUE', hideSkillPreview: true }
+            ],
+            'GARRAPACHERIA': [
+                { nick: 'GRAMAZZOTTI', name: 'Gramazzotti', role: 'Soporte', img: 'ChatGPT Image 12 may 2026, 06_34_29 p.m..png', skills: ['K', 'Rafael', 'Laura', 'Maro'], iconType: 'BLUE', skillImg: null },
+                { nick: 'SMITH', name: 'Smith', role: 'L2', img: 'ChatGPT Image 12 may 2026, 06_34_20 p.m..png', skills: ['Tatsuya', 'Kelly', 'Moco', 'Andrew'], iconType: 'RED', skillImg: null },
+                { nick: 'SALAZAR', name: 'Salazar', role: 'L1', img: 'ChatGPT Image 12 may 2026, 06_34_25 p.m..png', skills: ['Orion', 'Kelly', 'Miguel', 'Sonia'], iconType: 'RED', skillImg: null },
+                { nick: 'DARF', name: 'Darf', role: 'Granadero', img: 'ChatGPT Image 12 may 2026, 06_34_31 p.m..png', skills: ['Alvaro', 'Kelly', 'Moco', 'Luqueta'], iconType: 'GOLD', skillImg: null },
+                { nick: 'XENEIZE7', name: 'Xeneize7', role: 'L1', img: 'ChatGPT Image 12 may 2026, 06_34_27 p.m..png', skills: ['Tatsuya', 'Kelly', 'Jota', 'Miguel'], iconType: 'RED', skillImg: null },
+                { nick: 'GABRIEL', name: 'Gabriel', role: 'L1', img: 'ChatGPT Image 12 may 2026, 06_43_49 p.m..png', skills: ['Orion', 'Miguel', 'Sonia', 'Kelly'], iconType: 'RED', skillImg: null }
             ]
         };
 
@@ -409,7 +427,6 @@
             if(p.img) { img.src = p.img; img.style.display = 'block'; placeholder.style.display = 'none'; }
             else { img.style.display = 'none'; placeholder.style.display = 'flex'; }
             
-            // Lógica para mostrar/ocultar previsualización de habilidades
             const skillContainer = document.getElementById('modal-skills-img-container');
             const skillImg = document.getElementById('modal-skill-screenshot');
             
