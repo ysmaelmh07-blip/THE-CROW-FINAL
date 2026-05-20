@@ -6,7 +6,7 @@
     <title>SANTA ISABEL CUP - Sitio Oficial</title>
     
     <!-- ICONO DE LA PESTAÑA -->
-    <link rel="icon" type="image/png" href="LOGO DE LA COPA.png">
+    <link class="rounded-full" rel="icon" type="image/png" href="LOGO DE LA COPA.png">
     
     <!-- Framework de Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,6 +24,8 @@
             --neon-blue: #00f2ff;
             --pulpos-purple: #8b5cf6;
             --garra-red: #ff3131;
+            --gk9-cyan: #00f2ff;
+            --cobra-orange: #ff5722;
         }
 
         body {
@@ -202,7 +204,7 @@
         </audio>
     </div>
 
-    <!-- Vista Home -->
+    <!-- Vista Hero Home -->
     <div id="view-home" class="fade-in">
         <section class="hero-bg px-6">
             <div class="max-w-5xl z-10">
@@ -222,15 +224,17 @@
         <div class="flex flex-col items-center mb-20">
             <h2 class="text-5xl md:text-8xl font-orbitron font-black italic gold-text uppercase text-center leading-none">EQUIPOS <span class="text-white">REGISTRADOS</span></h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
-            <!-- Equipo 1 -->
+        
+        <!-- Grid adaptable para el despliegue óptimo de los 5 equipos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+            <!-- Equipo 1: THE CROW -->
             <div onclick="renderRoster('THE CROW')" class="bg-[#0c0c0c] border border-yellow-600/20 p-8 rounded-2xl cursor-pointer hover:border-yellow-500 transition-all group relative">
                 <img src="logo de scuad.jpeg" class="w-full h-64 object-cover rounded-xl mb-6 group-hover:scale-105 transition duration-700">
                 <h3 class="font-orbitron font-black text-4xl italic uppercase text-center gold-text">THE CROW</h3>
                 <p class="text-center text-zinc-500 text-xs mt-2 font-bold tracking-[0.3em]">REPRESENTANTE OFICIAL</p>
             </div>
 
-            <!-- Equipo 2 (LOS PULPOS) -->
+            <!-- Equipo 2: LOS PULPOS -->
             <div onclick="renderRoster('LOS PULPOS')" class="bg-[#0c0c0c] border border-purple-600/20 p-8 rounded-2xl cursor-pointer hover:border-purple-500 transition-all group relative">
                 <div class="w-full h-64 bg-black flex items-center justify-center rounded-xl mb-6 group-hover:scale-105 transition duration-700 overflow-hidden border border-zinc-800">
                      <img src="los pulpos.png" class="w-full h-full object-contain p-4">
@@ -239,13 +243,31 @@
                 <p class="text-center text-zinc-500 text-xs mt-2 font-bold tracking-[0.3em]">RETADOR SELECCIONADO</p>
             </div>
 
-            <!-- Equipo 3 (GARRAPACHERIA) -->
+            <!-- Equipo 3: GARRAPACHERIA -->
             <div onclick="renderRoster('GARRAPACHERIA')" class="bg-[#0c0c0c] border border-red-600/20 p-8 rounded-2xl cursor-pointer hover:border-red-500 transition-all group relative">
                 <div class="w-full h-64 bg-black flex items-center justify-center rounded-xl mb-6 group-hover:scale-105 transition duration-700 overflow-hidden border border-zinc-800">
                      <img src="Captura de pantalla 2026-05-12 150237.png" class="w-full h-full object-cover">
                 </div>
                 <h3 class="font-orbitron font-black text-4xl italic uppercase text-center text-white group-hover:text-red-500 transition-colors">GARRAPACHERIA</h3>
                 <p class="text-center text-zinc-500 text-xs mt-2 font-bold tracking-[0.3em]">CLAN ASPIRANTE</p>
+            </div>
+
+            <!-- Equipo 4: GK9 CHILE -->
+            <div onclick="renderRoster('GK9 CHILE')" class="bg-[#0c0c0c] border border-cyan-600/20 p-8 rounded-2xl cursor-pointer hover:border-cyan-550 transition-all group relative">
+                <div class="w-full h-64 bg-zinc-950 flex items-center justify-center rounded-xl mb-6 group-hover:scale-105 transition duration-700 overflow-hidden border border-zinc-800">
+                     <img src="C038B9D6-6873-42D6-8FEF-AA9B178CE311 - Esteban Aranda.png" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-orbitron font-black text-4xl italic uppercase text-center text-white group-hover:text-cyan-400 transition-colors">GK9 CHILE</h3>
+                <p class="text-center text-zinc-500 text-xs mt-2 font-bold tracking-[0.3em]">ESCUDRA INTERNACIONAL</p>
+            </div>
+
+            <!-- Equipo 5: COBRA BLACK -->
+            <div onclick="renderRoster('COBRA BLACK')" class="bg-[#0c0c0c] border border-orange-600/20 p-8 rounded-2xl cursor-pointer hover:border-orange-500 transition-all group relative">
+                <div class="w-full h-64 bg-zinc-950 flex items-center justify-center rounded-xl mb-6 group-hover:scale-105 transition duration-700 overflow-hidden border border-zinc-800">
+                     <img src="Screenshot_2026-05-19-14-30-38-084_com.miui.gallery - Ociel Gonzalez.jpg" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-orbitron font-black text-4xl italic uppercase text-center text-white group-hover:text-orange-400 transition-colors">COBRA BLACK</h3>
+                <p class="text-center text-zinc-500 text-xs mt-2 font-bold tracking-[0.3em]">CLAN CONTENDIENTE</p>
             </div>
         </div>
     </section>
@@ -260,17 +282,17 @@
                 <div class="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-4 border border-zinc-700"><i class="fas fa-trophy text-3xl text-zinc-600"></i></div>
                 <h4 class="font-orbitron text-xl font-bold">FAVORITO ACTUAL</h4>
                 <p class="text-white text-3xl font-black italic mt-2">—</p>
-            </div>
-            <div class="stats-card p-8 flex flex-col items-center opacity-60">
+             </div>
+             <div class="stats-card p-8 flex flex-col items-center opacity-60">
                 <div class="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-4 border border-zinc-700"><i class="fas fa-crown text-3xl text-zinc-600"></i></div>
                 <h4 class="font-orbitron text-xl font-bold">MVP LÍDER</h4>
                 <p class="text-white text-3xl font-black italic mt-2 uppercase">—</p>
-            </div>
-            <div class="stats-card p-8 flex flex-col items-center opacity-60">
+             </div>
+             <div class="stats-card p-8 flex flex-col items-center opacity-60">
                 <div class="w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-4 border border-zinc-700"><i class="fas fa-bolt text-3xl text-zinc-600"></i></div>
                 <h4 class="font-orbitron text-xl font-bold">MEJOR DÚO</h4>
                 <p class="text-white text-2xl font-black italic mt-2 uppercase">—</p>
-            </div>
+             </div>
         </div>
     </section>
 
@@ -359,6 +381,21 @@
                 { nick: 'DARF', name: 'Darf', role: 'Granadero', img: 'ChatGPT Image 12 may 2026, 06_34_31 p.m..png', skills: ['Alvaro', 'Kelly', 'Moco', 'Luqueta'], iconType: 'GOLD', skillImg: null },
                 { nick: 'XENEIZE7', name: 'Xeneize7', role: 'L1', img: 'ChatGPT Image 12 may 2026, 06_34_27 p.m..png', skills: ['Tatsuya', 'Kelly', 'Jota', 'Miguel'], iconType: 'RED', skillImg: null },
                 { nick: 'GABRIEL', name: 'Gabriel', role: 'L1', img: 'ChatGPT Image 12 may 2026, 06_43_49 p.m..png', skills: ['Orion', 'Miguel', 'Sonia', 'Kelly'], iconType: 'RED', skillImg: null }
+            ],
+            'GK9 CHILE': [
+                { nick: 'JUGADOR 1', name: 'Por definir', role: 'Soporte', img: null, skills: ['Alok', 'Moco', 'Kelly', 'Rafael'], iconType: 'BLUE', skillImg: null },
+                { nick: 'JUGADOR 2', name: 'Por definir', role: 'Rusher', img: null, skills: ['Tatsuya', 'Andrew', 'Kelly', 'Jota'], iconType: 'RED', skillImg: null },
+                { nick: 'JUGADOR 3', name: 'Por definir', role: 'Granadero', img: null, skills: ['Alvaro', 'Moco', 'Kelly', 'Luqueta'], iconType: 'GOLD', skillImg: null },
+                { nick: 'JUGADOR 4', name: 'Por definir', role: 'Rusher', img: null, skills: ['Tatsuya', 'Miguel', 'Sonia', 'Kelly'], iconType: 'RED', skillImg: null },
+                { nick: 'JUGADOR 5', name: 'Por definir', role: 'Soporte', img: null, skills: ['Skyler', 'Rafael', 'Maro', 'Laura'], iconType: 'BLUE', skillImg: null }
+            ],
+            'COBRA BLACK': [
+                { nick: 'GLOCK', name: 'Glock', role: 'L1', img: null, skills: ['Tatsuya', 'Kelly', 'Jota', 'Andrew'], iconType: 'RED', skillImg: null },
+                { nick: 'BENJA', name: 'Benja', role: 'L2', img: null, skills: ['Orion', 'Sonia', 'Miguel', 'Kelly'], iconType: 'RED', skillImg: null },
+                { nick: 'ONLY', name: 'Only', role: 'Soporte', img: null, skills: ['K', 'Miguel', 'Misha', 'Andrew'], iconType: 'BLUE', skillImg: null },
+                { nick: 'CANCER', name: 'Cancer', role: 'L2', img: null, skills: ['Tatsuya', 'Moco', 'Kelly', 'Jota'], iconType: 'RED', skillImg: null },
+                { nick: 'BLESS', name: 'Bless', role: 'Granadero', img: null, skills: ['Alvaro', 'Kelly', 'Moco', 'Luqueta'], iconType: 'GOLD', skillImg: null },
+                { nick: 'JUANICIYO', name: 'Juaniciyo', role: 'L2', img: null, skills: ['Alok', 'Andrew', 'Kelly', 'Jota'], iconType: 'RED', skillImg: null }
             ]
         };
 
@@ -427,6 +464,7 @@
             if(p.img) { img.src = p.img; img.style.display = 'block'; placeholder.style.display = 'none'; }
             else { img.style.display = 'none'; placeholder.style.display = 'flex'; }
             
+            // Lógica para mostrar/ocultar previsualización de habilidades
             const skillContainer = document.getElementById('modal-skills-img-container');
             const skillImg = document.getElementById('modal-skill-screenshot');
             
